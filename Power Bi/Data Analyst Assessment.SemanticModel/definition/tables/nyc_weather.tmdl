@@ -1,0 +1,153 @@
+table nyc_weather
+	lineageTag: d7c48427-9059-49b4-8276-a9aad0741b40
+
+	column origin
+		dataType: string
+		lineageTag: 2ee7f2d9-f17a-40d3-87e6-41841ce7532b
+		summarizeBy: none
+		sourceColumn: origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bfb3703-e6c8-4385-8ff7-6072e8fd656e
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fe204a5-9aaf-424b-8992-0f22e541cb29
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: int64
+		formatString: 0
+		lineageTag: f73461fa-2247-4a79-8402-88a8a6557f08
+		summarizeBy: sum
+		sourceColumn: day
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a2e62d7-2c19-4be6-81ed-f64d49301bfa
+		summarizeBy: sum
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp
+		dataType: int64
+		formatString: 0
+		lineageTag: 482f1165-72e4-4298-b331-11465b436939
+		summarizeBy: sum
+		sourceColumn: temp
+
+		annotation SummarizationSetBy = Automatic
+
+	column dewp
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ebe56c8-fbfb-4fb6-ac66-1909ebbcb4fa
+		summarizeBy: sum
+		sourceColumn: dewp
+
+		annotation SummarizationSetBy = Automatic
+
+	column humid
+		dataType: int64
+		formatString: 0
+		lineageTag: 57313853-50d7-4ba1-a3e1-bbcbf4fda174
+		summarizeBy: sum
+		sourceColumn: humid
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_dir
+		dataType: string
+		lineageTag: 0a5081b9-0223-4c35-8f90-508095b31c3f
+		summarizeBy: none
+		sourceColumn: wind_dir
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_speed
+		dataType: int64
+		formatString: 0
+		lineageTag: 19882f94-f606-4cac-9989-75bf152949b9
+		summarizeBy: sum
+		sourceColumn: wind_speed
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_gust
+		dataType: string
+		lineageTag: ad08b1c5-21ab-4d20-9c5f-3d32849d40df
+		summarizeBy: none
+		sourceColumn: wind_gust
+
+		annotation SummarizationSetBy = Automatic
+
+	column precip
+		dataType: int64
+		formatString: 0
+		lineageTag: b8538b99-306f-4728-af5a-ba76a9d1c312
+		summarizeBy: sum
+		sourceColumn: precip
+
+		annotation SummarizationSetBy = Automatic
+
+	column pressure
+		dataType: string
+		lineageTag: a78079e5-564e-4e30-916b-51628ff35603
+		summarizeBy: none
+		sourceColumn: pressure
+
+		annotation SummarizationSetBy = Automatic
+
+	column visib
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c903de2-7673-4a6f-8047-f0f57724c1a5
+		summarizeBy: sum
+		sourceColumn: visib
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_hour
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e1a0d6bd-68f0-4e06-abec-f22bf52ea22c
+		summarizeBy: none
+		sourceColumn: time_hour
+
+		variation Variation
+			isDefault
+			relationship: 0ef5c053-d7ee-4063-a174-00c2fcc06680
+			defaultHierarchy: LocalDateTable_10eddf66-3df7-4f5f-8e0e-614c32f33052.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nyc_weather = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\icaro\OneDrive\Documentos\GitHub\beon-tech-data-analyst-assessment\Data\dataset-20260831T195521Z-1-001\dataset\nyc_weather.csv"),[Delimiter=",", Columns=15, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"origin", type text}, {"year", Int64.Type}, {"month", Int64.Type}, {"day", Int64.Type}, {"hour", Int64.Type}, {"temp", Int64.Type}, {"dewp", Int64.Type}, {"humid", Int64.Type}, {"wind_dir", type text}, {"wind_speed", Int64.Type}, {"wind_gust", type text}, {"precip", Int64.Type}, {"pressure", type text}, {"visib", Int64.Type}, {"time_hour", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

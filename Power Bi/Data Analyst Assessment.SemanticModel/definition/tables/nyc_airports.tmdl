@@ -1,0 +1,85 @@
+table nyc_airports
+	lineageTag: d1e24fc3-2e31-4230-ad0d-a7befae64b83
+
+	column faa
+		dataType: string
+		lineageTag: 66c23b48-59aa-4f6b-8d22-f5705d9756b9
+		summarizeBy: none
+		sourceColumn: faa
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 263086b8-b126-4f55-a7c3-add0ba3691b2
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: int64
+		formatString: 0
+		lineageTag: 74afb956-afa3-40ac-bbab-685deb8e638e
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column longitude
+		dataType: int64
+		formatString: 0
+		lineageTag: acf2566b-51e2-4b9c-b7fa-1b5b084394ca
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column altitude
+		dataType: int64
+		formatString: 0
+		lineageTag: 4db55f20-0cad-433c-8a93-ec13a3742854
+		summarizeBy: sum
+		sourceColumn: altitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezone
+		dataType: int64
+		formatString: 0
+		lineageTag: 5712ab39-2f7f-4617-86c2-c7bbbacc78ea
+		summarizeBy: sum
+		sourceColumn: timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column dst
+		dataType: string
+		lineageTag: 166054a2-65ed-484d-b58e-e1bacb52f96b
+		summarizeBy: none
+		sourceColumn: dst
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezone_name
+		dataType: string
+		lineageTag: 321376e6-8345-46d2-b966-cb370117bdf1
+		summarizeBy: none
+		sourceColumn: timezone_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nyc_airports = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\icaro\OneDrive\Documentos\GitHub\beon-tech-data-analyst-assessment\Data\dataset-20260831T195521Z-1-001\dataset\nyc_airports.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"faa", type text}, {"name", type text}, {"latitude", Int64.Type}, {"longitude", Int64.Type}, {"altitude", Int64.Type}, {"timezone", Int64.Type}, {"dst", type text}, {"timezone_name", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

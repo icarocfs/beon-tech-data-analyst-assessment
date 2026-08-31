@@ -1,0 +1,18 @@
+relationship bc95ce21-91ff-41f2-9d5c-cabb51daad13
+	joinOnDateBehavior: datePartOnly
+	fromColumn: nyc_flights_fixed.time_hour
+	toColumn: LocalDateTable_36ce69bf-0b2e-4eb6-b402-1f81c7cd9cd9.Date
+
+relationship 0ef5c053-d7ee-4063-a174-00c2fcc06680
+	joinOnDateBehavior: datePartOnly
+	fromColumn: nyc_weather.time_hour
+	toColumn: LocalDateTable_10eddf66-3df7-4f5f-8e0e-614c32f33052.Date
+
+relationship AutoDetected_52907cfc-cac3-4c0e-b4f5-ec9fcd295b69
+	fromColumn: nyc_flights_fixed.carrier
+	toColumn: nyc_airlines.carrier
+
+relationship AutoDetected_bb8f9c18-935d-4d55-83cb-8276710f8525
+	fromColumn: nyc_flights_fixed.tailnum
+	toColumn: nyc_planes.tailnum
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Data Analyst Assessment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "51eda244-a96b-4ac8-a9f5-4bb1c3d29edf"
+  }
+}

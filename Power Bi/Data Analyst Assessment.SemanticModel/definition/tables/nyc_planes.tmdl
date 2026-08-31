@@ -1,0 +1,91 @@
+table nyc_planes
+	lineageTag: 46fa0c85-7238-42c5-84bb-bad3c8cae5c7
+
+	column tailnum
+		dataType: string
+		lineageTag: 7869491c-6aa4-4bd8-b90f-3fbe0187d8b9
+		summarizeBy: none
+		sourceColumn: tailnum
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: string
+		lineageTag: 31be9df4-25ae-496a-960c-84b376dacf22
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: d077de26-3fd9-4525-99e3-2c1a59c08436
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column manufacturer
+		dataType: string
+		lineageTag: 71a510d3-1e9f-4aca-875e-58701866399d
+		summarizeBy: none
+		sourceColumn: manufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column model
+		dataType: string
+		lineageTag: b0d60d60-0605-4886-9a9a-508be6c62162
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column engines
+		dataType: int64
+		formatString: 0
+		lineageTag: e864bb79-e710-4444-9ae9-6650e2895922
+		summarizeBy: none
+		sourceColumn: engines
+
+		annotation SummarizationSetBy = Automatic
+
+	column seats
+		dataType: int64
+		formatString: 0
+		lineageTag: 42123128-82f7-46ca-a805-4b9f75cf25aa
+		summarizeBy: none
+		sourceColumn: seats
+
+		annotation SummarizationSetBy = Automatic
+
+	column speed
+		dataType: string
+		lineageTag: 11168b9b-6fe9-42aa-bb85-0de2606b85bb
+		summarizeBy: none
+		sourceColumn: speed
+
+		annotation SummarizationSetBy = Automatic
+
+	column engine
+		dataType: string
+		lineageTag: bc185382-c5fa-43d4-a5cb-ab43f639ff5e
+		summarizeBy: none
+		sourceColumn: engine
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nyc_planes = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\icaro\OneDrive\Documentos\GitHub\beon-tech-data-analyst-assessment\Data\dataset-20260831T195521Z-1-001\dataset\nyc_planes.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"tailnum", type text}, {"year", type text}, {"type", type text}, {"manufacturer", type text}, {"model", type text}, {"engines", Int64.Type}, {"seats", Int64.Type}, {"speed", type text}, {"engine", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

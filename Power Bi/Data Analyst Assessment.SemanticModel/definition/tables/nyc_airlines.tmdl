@@ -1,0 +1,34 @@
+table nyc_airlines
+	lineageTag: 830241e3-dcff-4042-9426-cc661cd6ca07
+
+	column carrier
+		dataType: string
+		lineageTag: 1b277348-a1d5-41a8-8ce7-0e9b036412e5
+		summarizeBy: none
+		sourceColumn: carrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 9a293a99-4236-4567-bf8f-d8f73950f58c
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nyc_airlines = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\icaro\OneDrive\Documentos\GitHub\beon-tech-data-analyst-assessment\Data\dataset-20260831T195521Z-1-001\dataset\nyc_airlines.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"carrier", type text}, {"name", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

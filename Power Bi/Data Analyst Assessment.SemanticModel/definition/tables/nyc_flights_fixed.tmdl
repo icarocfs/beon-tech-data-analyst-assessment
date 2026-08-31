@@ -1,0 +1,219 @@
+table nyc_flights_fixed
+	lineageTag: 956e712d-7511-4907-b1a9-640e01aa52cd
+
+	measure 'Newark Flights' = CALCULATE(DISTINCTCOUNT(nyc_flights_fixed[dest]),nyc_flights_fixed[origin]="EWR")
+		formatString: 0
+		lineageTag: a5264251-ce31-43cf-99ec-e657e604dc65
+
+	measure 'Newark Flights average per month' =
+			
+			AVERAGEX(
+				KEEPFILTERS(VALUES('nyc_flights_fixed'[month])),
+				CALCULATE([Newark Flights])
+			)
+		formatString: 0
+		lineageTag: 93160b13-f4b5-4a0f-8628-1f7a0e49027f
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "AveragePerCategory"
+				}
+
+		changedProperty = FormatString
+
+	column Column1
+		dataType: int64
+		formatString: 0
+		lineageTag: 59755603-787a-4442-9dc6-d41b151870dc
+		summarizeBy: sum
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: f810ca31-9be4-441d-9082-52402788a1b2
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: 54302f12-eeda-4c78-b2a1-e084574ba1cd
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: int64
+		formatString: 0
+		lineageTag: 08b8ae95-d45a-4a36-8402-8dc0ad0d1ca3
+		summarizeBy: sum
+		sourceColumn: day
+
+		annotation SummarizationSetBy = Automatic
+
+	column dep_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d9e3927-34b0-46af-920d-442434467999
+		summarizeBy: sum
+		sourceColumn: dep_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column sched_dep_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 814607eb-cc84-4355-baf0-c81414ddff57
+		summarizeBy: sum
+		sourceColumn: sched_dep_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column dep_delay
+		dataType: int64
+		formatString: 0
+		lineageTag: a416540f-bc71-475d-999a-7610fad7cf97
+		summarizeBy: sum
+		sourceColumn: dep_delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column arr_time
+		dataType: int64
+		formatString: 0
+		lineageTag: d5be0f6b-3828-412b-9cdf-dd5774a68905
+		summarizeBy: sum
+		sourceColumn: arr_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column sched_arr_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ab0f798-9dea-4ac7-91c0-189ab56bd8bc
+		summarizeBy: sum
+		sourceColumn: sched_arr_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column arr_delay
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a0d1279-ffba-4827-a532-b7bc0d834f30
+		summarizeBy: sum
+		sourceColumn: arr_delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column carrier
+		dataType: string
+		lineageTag: 07832cd6-774c-43fb-9eaa-6fd1b58f31a2
+		summarizeBy: none
+		sourceColumn: carrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column flight
+		dataType: int64
+		formatString: 0
+		lineageTag: 3327be18-7a21-4a2e-9609-99d68ddb37fe
+		summarizeBy: sum
+		sourceColumn: flight
+
+		annotation SummarizationSetBy = Automatic
+
+	column tailnum
+		dataType: string
+		lineageTag: 75a66baa-c2af-40df-aeda-534d97f0d5b3
+		summarizeBy: none
+		sourceColumn: tailnum
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin
+		dataType: string
+		lineageTag: 48d92f43-41cb-462f-b1fe-e633a9aff6e7
+		summarizeBy: none
+		sourceColumn: origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column dest
+		dataType: string
+		lineageTag: 21315635-bfdb-4476-8e26-07c15d7c1841
+		summarizeBy: none
+		sourceColumn: dest
+
+		annotation SummarizationSetBy = Automatic
+
+	column air_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d077ec7-7932-4834-bb1b-1e1825db636b
+		summarizeBy: sum
+		sourceColumn: air_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance
+		dataType: int64
+		formatString: 0
+		lineageTag: cf2a02ed-1feb-4d73-af46-fcd3bb1d2b35
+		summarizeBy: sum
+		sourceColumn: distance
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 00a92a88-f936-4750-ba11-8532d3455f5b
+		summarizeBy: sum
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column minute
+		dataType: int64
+		formatString: 0
+		lineageTag: 96c8b3cb-421a-4568-8500-064e9cc67eb0
+		summarizeBy: sum
+		sourceColumn: minute
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_hour
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c2d1650b-0779-426d-b7e0-a53805642ac7
+		summarizeBy: none
+		sourceColumn: time_hour
+
+		variation Variation
+			isDefault
+			relationship: bc95ce21-91ff-41f2-9d5c-cabb51daad13
+			defaultHierarchy: LocalDateTable_36ce69bf-0b2e-4eb6-b402-1f81c7cd9cd9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nyc_flights_fixed = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\icaro\OneDrive\Documentos\GitHub\beon-tech-data-analyst-assessment\Data\dataset-20260831T195521Z-1-001\dataset\nyc_flights_fixed.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"year", Int64.Type}, {"month", Int64.Type}, {"day", Int64.Type}, {"dep_time", Int64.Type}, {"sched_dep_time", Int64.Type}, {"dep_delay", Int64.Type}, {"arr_time", Int64.Type}, {"sched_arr_time", Int64.Type}, {"arr_delay", Int64.Type}, {"carrier", type text}, {"flight", Int64.Type}, {"tailnum", type text}, {"origin", type text}, {"dest", type text}, {"air_time", Int64.Type}, {"distance", Int64.Type}, {"hour", Int64.Type}, {"minute", Int64.Type}, {"time_hour", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
