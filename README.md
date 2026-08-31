@@ -20,7 +20,7 @@ The analysis was focused on flights departing from Newark Liberty International 
 
 **Result:** 82 distinct destinations.
 
-<img width="633" height="370" alt="image" src="https://github.com/user-attachments/assets/ca45a5ce-3238-4733-906a-d6d397e87246" />
+<img width="315" height="180" alt="image" src="https://github.com/user-attachments/assets/ca45a5ce-3238-4733-906a-d6d397e87246" />
 
 ---
 
@@ -42,7 +42,8 @@ The analysis was focused on flights departing from Newark Liberty International 
 
 **Result:** May 2013 — 9,931 flights.
 
-<img width="633" height="370" alt="image" src="https://github.com/user-attachments/assets/c0298a8c-3ec8-49f5-901f-98f6285fd7c6" />
+<img width="156" height="310" alt="image" src="https://github.com/user-attachments/assets/97a5a53c-283f-462c-90ad-028dc6a06e4f" />
+
 
 
 ---
