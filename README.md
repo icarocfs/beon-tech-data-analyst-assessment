@@ -53,6 +53,7 @@ The analysis was focused on flights departing from Newark Liberty International 
 **Question:** Identify the month with the highest accumulated departure delay.
 
 **Result:** July 2013.
+
 <img width="633" height="370" alt="image" src="https://github.com/user-attachments/assets/df4d04cf-4257-4991-a04d-e1ee5ad190c9" />
 
 
