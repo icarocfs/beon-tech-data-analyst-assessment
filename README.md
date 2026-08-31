@@ -19,7 +19,8 @@ The analysis was focused on flights departing from Newark Liberty International 
 **Question:** Determine the number of distinct destinations connected to the airport.
 
 **Result:** 82 distinct destinations.
-<img width="226" height="150" alt="image" src="https://github.com/user-attachments/assets/ca45a5ce-3238-4733-906a-d6d397e87246" />
+
+<img width="633" height="370" alt="image" src="https://github.com/user-attachments/assets/ca45a5ce-3238-4733-906a-d6d397e87246" />
 
 ---
 
@@ -41,7 +42,7 @@ The analysis was focused on flights departing from Newark Liberty International 
 
 **Result:** May 2013 — 9,931 flights.
 
-<img width="163" height="306" alt="image" src="https://github.com/user-attachments/assets/c0298a8c-3ec8-49f5-901f-98f6285fd7c6" />
+<img width="633" height="370" alt="image" src="https://github.com/user-attachments/assets/c0298a8c-3ec8-49f5-901f-98f6285fd7c6" />
 
 
 ---
@@ -51,6 +52,6 @@ The analysis was focused on flights departing from Newark Liberty International 
 **Question:** Identify the month with the highest accumulated departure delay.
 
 **Result:** July 2013.
-<img width="686" height="465" alt="image" src="https://github.com/user-attachments/assets/df4d04cf-4257-4991-a04d-e1ee5ad190c9" />
+<img width="633" height="370" alt="image" src="https://github.com/user-attachments/assets/df4d04cf-4257-4991-a04d-e1ee5ad190c9" />
 
 
