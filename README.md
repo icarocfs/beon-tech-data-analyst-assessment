@@ -31,6 +31,7 @@ The analysis was focused on flights departing from Newark Liberty International 
 **Approach:** During the interview, the analysis was requested at the **monthly level**, instead of the daily level stated in the original exercise.
 
 **Result:** 
+
 <img width="633" height="370" alt="image" src="https://github.com/user-attachments/assets/cf4d11e3-1d91-42a7-89c1-350f1aeb9028" />
 
 
